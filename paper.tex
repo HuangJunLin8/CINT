@@ -99,20 +99,22 @@ The model's left side constitutes the CVAE encoder – containing a Transformer 
 
 The dimensional information of key components is presented in \textbf{\cref{tab:dim_summary}} to clarify the model pipeline. The architecture follows a standard visual encoding and sequence modeling design: image features are first extracted and flattened, then fused with proprioceptive state and latent variables, and finally decoded into a sequence of predicted joint actions.
 
-
 \begin{table}[htbp]
-	\centering
-	\caption{Dimensions of CVAE policy network modules}
-	\label{tab:dim_summary}
-	\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
-		\toprule
-		\textbf{Module} & \textbf{Input Dim} & \textbf{Output Dim} & \textbf{Function} \\
-		\midrule
-		CNN & $4 \times 480 \times 640 \times 3$ & $1200 \times 512$ & Visual feature extraction \\
-		Encoder & $1202 \times 512$ & $1202 \times 512$ & Fuse image, joints and latent $z$ \\
-		Decoder & $k \times 512$ & $k \times 14$ & Generate $k$-step action sequence \\
-		\bottomrule
-	\end{tabularx}
+    \centering
+    \caption{Dimensions of CVAE policy network modules}
+    \label{tab:dim_summary}
+    \begin{tabularx}{\textwidth}{@{}>{\hsize=0.5\hsize\centering\arraybackslash}X 
+                                >{\hsize=1.0\hsize\centering\arraybackslash}X 
+                                >{\hsize=0.8\hsize\centering\arraybackslash}X 
+                                >{\hsize=1.7\hsize\centering\arraybackslash}X@{}}
+        \toprule
+        \textbf{Module} & \textbf{Input Dim} & \textbf{Output Dim} & \textbf{Function} \\
+        \midrule
+        CNN & $4 \times 480 \times 640 \times 3$ & $1200 \times 512$ & Visual feature extraction \\
+        Encoder & $1202 \times 512$ & $1202 \times 512$ & Fuse image, joints and latent $z$ \\
+        Decoder & $k \times 512$ & $k \times 14$ & Generate $k$-step action sequence \\
+        \bottomrule
+    \end{tabularx}
 \end{table}
 
 \section{Experimental Setup and Methodology}
