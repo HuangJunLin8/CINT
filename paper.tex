@@ -68,7 +68,7 @@
 
 %
 \begin{abstract}
-Imitation learning allows robots to efficiently acquire complex tasks that are challenging to program manually. By learning from demonstrations, robots can adapt to new environments and task variations while enabling intuitive human-robot interaction. However, hardware constraints—such as motion limitations and sensory precision—often reduce its effectiveness. To mitigate these issues, we evaluate the Action Chunking with Transformers (ACT) algorithm, which reduces compounding errors and enhances learning efficiency. Through systematic experiments across three distinct task objectives under varying conditions, we assess ACT’s real-world applicability and its potential to accelerate robotic deployment.
+Imitation learning allows robots to efficiently acquire complex tasks that are challenging to program manually. By learning from demonstrations, robots can adapt to new environments and task variations while enabling intuitive human-robot interaction. However, hardware constraints—such as motion limitations and sensory precision—often reduce its effectiveness. To mitigate these issues, we evaluate the Action Chunking with Transformers (ACT) algorithm, which reduces compounding errors and enhances learning efficiency. Through systematic experiments across two distinct task objectives under varying conditions, we assess ACT’s real-world applicability and its potential to accelerate robotic deployment.
 
 
 \keywords{Imitation Learning  \and Behavioral Cloning (BC) \and Action Chunking with Transformers (ACT).}
@@ -154,7 +154,6 @@ This task optimized the positioning of the wrist-mounted vision system. As shown
 \caption{Wrist-mounted camera position adjustment.} \label{fig12}
 \end{figure}
 
-This task optimized the positioning of the wrist-mounted vision system. As shown in \cref{fig12}, the initial configuration (Position 1) exhibited tier recognition errors in multi-layered disc scenarios, primarily manifesting as erroneous grasps of second-layer discs with only a 40\% success rate. By relocating the camera to the robotic gripper's center position (Position 2), precise tier recognition was achieved, significantly improving the grasping success rate to 90\%.
 
 
 
@@ -235,7 +234,7 @@ These findings suggest that for similar daily-life tasks, the proposed solution 
 
 
 \section{Conclusion}
-The three experiments above demonstrate that the ACT algorithm can reduce costs while meeting practical task requirements, making it suitable for real-world applications like factory robotic arms and household service robots. Although still constrained by hardware limitations and the scale/quality of demonstration datasets - preventing true task generalization - its end-to-end learning approach significantly decreases deployment costs and implementation barriers, enabling rapid adaptation to diverse complex daily tasks.
+The two experiments above demonstrate that the ACT algorithm can reduce costs while meeting practical task requirements, making it suitable for real-world applications like factory robotic arms and household service robots. Although still constrained by hardware limitations and the scale/quality of demonstration datasets - preventing true task generalization - its end-to-end learning approach significantly decreases deployment costs and implementation barriers, enabling rapid adaptation to diverse complex daily tasks.
 
 % \begin{REF}
   % \vspace{-50pt}
