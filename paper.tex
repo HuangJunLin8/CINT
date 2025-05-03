@@ -97,14 +97,17 @@ To better integrate the ACT algorithm into model training, the research team des
 
 The model's left side constitutes the CVAE encoder – containing a Transformer encoder, while the right side comprises the CVAE decoder – incorporating both a Transformer encoder and a Transformer decoder. During training, we primarily focus on the left-side operations: sampling RGB images and joint position tuples from human demonstration data to form corresponding action sequences as prediction targets (these action sequences are known predictions derived from the demonstration data), thereby obtaining the model's key parameter – the "style variable z".
 
-The dimensional information of key components is presented in \textbf{\cref{tab:dim_summary}} to clarify the model pipeline. The architecture follows a standard visual encoding and sequence modeling design: image features are first extracted and flattened, then fused with proprioceptive state and latent variables, and finally decoded into a sequence of predicted joint actions.
+The dimensional information of key components is presented in \textbf{Table~\ref{tab:dim_summary}} to clarify the model pipeline. The architecture follows a standard visual encoding and sequence modeling design: image features are first extracted and flattened, then fused with proprioceptive state and latent variables, and finally decoded into a sequence of predicted joint actions.
 
 
 \begin{table}[htbp]
-	\centering
+    \centering
 	\caption{Dimensions of CVAE policy network modules}
 	\label{tab:dim_summary}
-	\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
+	\begin{tabularx}{\textwidth}{@{}>{\hsize=0.5\hsize\centering\arraybackslash}X 
+			>{\hsize=1.0\hsize\centering\arraybackslash}X 
+			>{\hsize=0.8\hsize\centering\arraybackslash}X 
+			>{\hsize=1.7\hsize\centering\arraybackslash}X@{}}
 		\toprule
 		\textbf{Module} & \textbf{Input Dim} & \textbf{Output Dim} & \textbf{Function} \\
 		\midrule
@@ -194,7 +197,7 @@ As shown in \cref{fig14}, which illustrates the training loss curves for the fir
 \end{figure}
 
 
-The validation success rates for models trained on the 15 decomposed actions are presented in Table~\ref{tab2}, with each model evaluated over 10 trials.
+The validation success rates for models trained on the 15 decomposed actions are presented in \textbf{Table~\ref{tab2}}, with each model evaluated over 10 trials.
 
 \begin{table}[H]
   \centering
