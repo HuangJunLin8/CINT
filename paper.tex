@@ -197,7 +197,7 @@ As shown in \cref{fig14}, which illustrates the training loss curves for the fir
 \end{figure}
 
 
-The validation success rates for models trained on the 15 decomposed actions are presented in \textbf{Table~\ref{tab2}}, with each model evaluated over 10 trials.
+The validation success rates for models trained on the 15 decomposed actions are presented in \textbf{Table~\ref{tab2}}, with each model evaluated over 10 trials. 
 
 \begin{table}[H]
   \centering
@@ -233,8 +233,7 @@ The validation success rates for models trained on the 15 decomposed actions are
 \end{table}
 
 
-
-Action chunking mitigates error accumulation in long-horizon tasks~\cite{ref10}, the integrated task execution achieved a 60\% success rate (6/10) when sequentially deploying all models to complete the full Tower of Hanoi task.
+Action chunking mitigates error accumulation in long-horizon tasks by decomposing them into manageable units~\cite{ref10}. Experimental results demonstrate that while individual actions can achieve over 90\% success rate, the integrated task execution system's overall performance drops to 60\% (6/10) in sequential model deployment for the complete Tower of Hanoi task due to the bucket effect.
 
 \subsection{Dual-Arm Cooperative Tableware Cleaning Task}
 Based on bimanual coordination theory~\cite{ref11}, this task employs a dual master-slave arm configuration to achieve human-like bimanual manipulation for plate wiping. This task employs a dual master-slave arm system with a three-camera setup, selecting a dish-cleaning scenario in a household context to simulate bimanual operation. \cref{fig9} illustrates the task environment configuration. The setup consists of a pair of blue master-slave arms and a pair of white master-slave arms. The two master arms are responsible for teleoperating the slave arms to collect data, while the other two master arms execute the final dish-cleaning task. The triple-camera system is adopted, analogous to visual policy optimization~\cite{ref12}, leveraging multi-camera fusion strategies~\cite{ref13} by combining global, frontal, and side-view cameras for full-process monitoring. Multi-perspective fusion of global and wrist cameras enhances precision: a global camera fixed overhead records the workspace to guide plate-wiping; a front-facing camera mounted centrally directs the blue arm to grasp the plate edge; a downward-facing camera on the left ensures precise placement at the target location (marked with a red tag). On the table, a soiled plate is placed in the center, with a sponge placed on the right side. A desk lamp is installed near the bracket to provide supplemental lighting, ensuring consistent illumination for the experiment.
@@ -246,7 +245,7 @@ Based on bimanual coordination theory~\cite{ref11}, this task employs a dual mas
 \end{figure}
 
 
-Figure~\ref{fig9} illustrates the entire task workflow. It begins with the global-view camera identifying the soiled plate. The blue robotic arm then moves to the plate's position and, guided by the mid-level camera, precisely grips the plate's edge. Next, the white robotic arm picks up the sponge and wipes the stains off the plate until the global-view camera confirms the plate is clean~\cite{fu_deep_2022}. The white arm then releases the sponge and returns to its initial position. Subsequently, the blue robotic arm, guided by the side-view camera, accurately places the cleaned plate onto the designated spot (marked with a red positioning tag) before resetting. This concludes the task.
+\textbf{Figure~\ref{fig9}} illustrates the entire task workflow. It begins with the global-view camera identifying the soiled plate. The blue robotic arm then moves to the plate's position and, guided by the mid-level camera, precisely grips the plate's edge. Next, the white robotic arm picks up the sponge and wipes the stains off the plate until the global-view camera confirms the plate is clean~\cite{fu_deep_2022}. The white arm then releases the sponge and returns to its initial position. Subsequently, the blue robotic arm, guided by the side-view camera, accurately places the cleaned plate onto the designated spot (marked with a red positioning tag) before resetting. This concludes the task.
 
 
 The conventional LeRobot framework was only suitable for single-arm static task scenarios. To enable bimanual operation emulation, this study extensively customized the LeRobot framework with reference to Transformer architecture extension methods . The enhanced framework now supports dual robotic arms, multiple cameras, and 7-DOF robotic arms, capable of automatically determining camera and robotic arm status parameters during data collection and training while adhering to human-robot interaction guidelines~\cite{ref15}. This achieves a fully customizable pipeline encompassing teleoperation data collection, model training, and model deployment.
