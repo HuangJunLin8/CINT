@@ -177,11 +177,9 @@ This task optimized the positioning of the wrist-mounted vision system. As shown
 
 
 
+For the 4-layer Tower of Hanoi task, a total of 15 atomic disk-moving actions were identified, each requiring a separate model. Referencing hierarchical task decomposition methods~\cite{ref7}, 40 training episodes were initially collected per action, with each model trained for 100,000 steps. Due to potential teleoperation errors and lighting variations (e.g., between daytime and evening)\cite{ref8}, some models showed suboptimal validation performance. To enhance robustness, following design principles for home environments\cite{ref9}, additional data were collected and retraining was performed for underperforming models.
 
-To train a high-precision ACT (Action Chunking Transformer) model, this study implemented a systematic data collection protocol. Referencing hierarchical task decomposition methods~\cite{ref7}, for each atomic action (totaling 15 fundamental action units) in the Tower of Hanoi task, 40 training episodes were captured. Using illumination perturbation method~\cite{ref8}, with fixed lighting and background (gray tablecloth), following the robustness design principles for home environments ~\cite{ref9}. The first 20 episodes were conducted under standard lighting conditions, while the latter 20 episodes introduced lighting variations by adjusting the position and on/off state of a desk lamp to enhance the model's environmental robustness.Under our hardware configuration, the model achieved an average training time of 2 hours.
-
-
-As shown in \cref{fig14}, each model achieved a final training loss below 0.05 after completing 80,000 training steps.
+As shown in \cref{fig14}, which illustrates the training loss curves for the first two models, all models achieved final training losses below 0.05, indicating stable convergence across the training process.
 
 
 \begin{figure}[H]
