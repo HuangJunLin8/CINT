@@ -83,13 +83,11 @@ Imitation learning allows robots to efficiently acquire complex tasks that are c
 \section{Introduction}
 The ACT algorithm creates low-cost imitation learning by combining action chunking and temporal ensemble to address error accumulation in behavioral cloning. It trains neural networks on state-action data, significantly reducing time-amplified execution errors in industrial precision tasks. 
  
-As illustrated in \cref{fig1}\textbf{(a)}, ACT incorporates two key components: action chunking and temporal ensemble. With a fixed chunk size $k$, the agent receives an observation every $k$ steps and executes $k$ consecutive actions. This reduces the accumulation of errors across time. To maintain motion continuity, the policy is queried at every timestep, producing overlapping action sequences that are blended through exponential temporal ensemble.
-
-Compared to prior imitation learning methods such as BC-ConvMLP, BeT, and RT-1, ACT demonstrates several notable improvements. BC-ConvMLP uses a simple feedforward architecture based on current image and joint inputs, without modeling temporal dependencies, which often leads to unstable behavior. BeT and RT-1 adopt Transformer architectures for temporal modeling but predict only a single action at a time, lacking structured action-level modeling. In addition, both typically discretize the action space, which limits their effectiveness in high-precision tasks. In contrast, ACT directly predicts continuous actions, and its use of action chunks and temporal blending improves both accuracy and robustness, especially in long-horizon, multi-stage robotic manipulation tasks.
+ As shown in \cref{fig1}\textbf{(a)},the algorithm employs action chunking and temporal ensemble techniques during training. With a fixed chunk size k, the agent receives environmental observations every k steps and executes k sequential actions. This design effectively reduces historical error accumulation. To ensure motion continuity, the algorithm queries the policy at every timestep, generating overlapping predicted actions that are then smoothly blended through temporal ensemble using exponential weighting.
 
 \begin{figure}
 \includegraphics[width=\textwidth]{fig1.pdf}
-\caption{(a) ACT implementation principles; (b) CVAE model architecture} \label{fig1}
+\caption{ ACT implementation principles and  CVAE model architecture} \label{fig1}
 \end{figure}
 
 
@@ -129,7 +127,7 @@ We selected two representative manipulation tasks: Tower of Hanoi, and dish wash
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{fig3.pdf}
-\caption{Left figure is leader arm,right figure is follower arm.} \label{fig2-1}
+\caption{leader arm (Left) and follower arm(right).} \label{fig2-1}
 \end{figure}
 
 % \begin{figure}[htbp]
@@ -156,7 +154,7 @@ Each 6-DOF robotic arm consists of a 3D-printed kit assembled with six 12V seria
 \begin{figure}
 \centering
   \includegraphics[width=0.95\textwidth]{fig4.pdf}
-  \caption{Upper left figure is the initial state; upper right figure is the target state; bottom figure is the training environment} \label{fig2}
+  \caption{ initial state(upper left); target state(upper right);training environment(bottom)} \label{fig2}
   \end{figure}
 
 \subsection{Tower of Hanoi task}
@@ -170,7 +168,7 @@ This task requires the robotic arm to autonomously relocate all four disks from 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{10}
-\caption{Overall Workflow}
+\caption{Overall workflow}
  \label{fig10}
 \end{figure}
 
@@ -192,15 +190,15 @@ As shown in \cref{fig14}, which illustrates the training loss curves for the fir
 \begin{figure}[H]
 \centering
 \includegraphics[width=323pt]{fig15.pdf}
-\caption{  Loss curve for the first action} \label{fig14}
+\caption{The loss curve for the first two actions during model training} \label{fig14}
 \end{figure}
 
 
-The validation success rates for models trained on the 15 decomposed actions are presented in \textbf{Table~\ref{tab2}}, with each model evaluated over 10 trials.
+The validation success rates for models trained on the 15 decomposed actions are presented in Table~\ref{tab2}, with each model evaluated over 10 trials.
 
 \begin{table}[H]
   \centering
-    \caption{\small Validation Success Rates of Decomposed Actions}\label{tab2}
+    \caption{\small Model training specifications}\label{tab2}
   \begin{tabularx}{\textwidth}{
       >{\centering\arraybackslash}p{0.8cm}     % 第一列固定宽度（窄）
       >{\centering\arraybackslash}X           % 第二列自动调整
@@ -233,9 +231,7 @@ The validation success rates for models trained on the 15 decomposed actions are
 
 
 
-Action chunking helps mitigate error accumulation in long-horizon tasks~\cite{ref10}. In our evaluation, sequentially deploying all models to complete the full Tower of Hanoi task achieved a 60\% success rate (6/10). Most failures were due to grasping the wrong disk or misalignment during placement, causing the disk to fall. Given that the Tower of Hanoi task requires high precision in execution, our current priority is to ensure accurate completion of the task sequence. In more open environments—such as those with human presence, lighting variation, or camera shifts—such errors may be amplified, and system robustness remains a key challenge.To address this, we propose two future directions: (1) applying reinforcement learning fine-tuning to error-prone action segments to enable adaptive correction, and (2) integrating visual-feedback-based online correction, such as retrying failed grasps. While these approaches are not implemented in this work, they hold promise for future research.
-
-Moreover, task generalization—such as handling varied initial configurations of the Tower of Hanoi—will be an important direction for future evaluation. This would place higher demands on the model’s adaptability and policy stability. Achieving such generalization is expected to require larger-scale datasets and significantly longer training durations. Given the already considerable challenge of ensuring accurate task execution, our current efforts focus on precision, laying the groundwork for subsequent generalization studies.
+Action chunking mitigates error accumulation in long-horizon tasks~\cite{ref10}, the integrated task execution achieved a 60\% success rate (6/10) when sequentially deploying all models to complete the full Tower of Hanoi task.
 
 \subsection{Dual-Arm Cooperative Tableware Cleaning Task}
 Based on bimanual coordination theory~\cite{ref11}, this task employs a dual master-slave arm configuration to achieve human-like bimanual manipulation for plate wiping. This task employs a dual master-slave arm system with a three-camera setup, selecting a dish-cleaning scenario in a household context to simulate bimanual operation. \cref{fig9} illustrates the task environment configuration. The setup consists of a pair of blue master-slave arms and a pair of white master-slave arms. The two master arms are responsible for teleoperating the slave arms to collect data, while the other two master arms execute the final dish-cleaning task. The triple-camera system is adopted, analogous to visual policy optimization~\cite{ref12}, leveraging multi-camera fusion strategies~\cite{ref13} by combining global, frontal, and side-view cameras for full-process monitoring. Multi-perspective fusion of global and wrist cameras enhances precision: a global camera fixed overhead records the workspace to guide plate-wiping; a front-facing camera mounted centrally directs the blue arm to grasp the plate edge; a downward-facing camera on the left ensures precise placement at the target location (marked with a red tag). On the table, a soiled plate is placed in the center, with a sponge placed on the right side. A desk lamp is installed near the bracket to provide supplemental lighting, ensuring consistent illumination for the experiment.
