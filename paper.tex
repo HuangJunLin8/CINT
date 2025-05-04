@@ -46,7 +46,7 @@
 %\titlerunning{Abbreviated paper title}
 % If the paper title is too long for the running head, you can set
 % an abbreviated paper title here
-
+\titlerunning{Real-world Feasibility Analysis of ACT Algorithm for Robotic Manipulation}  % 页眉显示的短标题
 \author{
   Junlin Huang\inst{1} \and
   Feihong Liu\inst{1} \and
@@ -67,6 +67,7 @@
   %\email{gzhuangjunlin@163.com}  
 }
 \maketitle
+
 
 
 
@@ -190,7 +191,7 @@ For the 4-layer Tower of Hanoi task, a total of 15 atomic disk-moving actions we
 As shown in \cref{fig14}, which illustrates the training loss curves for the first two models, all models achieved final training losses below 0.05, indicating stable convergence across the training process.
 
 
-\begin{figure}[H]
+\begin{figure}
 \centering
 \includegraphics[width=323pt]{fig15.pdf}
 \caption{The loss curve for the first two actions during model training} \label{fig14}
@@ -199,7 +200,7 @@ As shown in \cref{fig14}, which illustrates the training loss curves for the fir
 
 The validation success rates for models trained on the 15 decomposed actions are presented in \textbf{Table~\ref{tab2}}, with each model evaluated over 10 trials. 
 
-\begin{table}[H]
+\begin{table}
   \centering
     \caption{\small Model training specifications}\label{tab2}
   \begin{tabularx}{\textwidth}{
@@ -238,7 +239,7 @@ Action chunking mitigates error accumulation in long-horizon tasks by decomposin
 \subsection{Dual-Arm Cooperative Tableware Cleaning Task}
 Based on bimanual coordination theory~\cite{ref11}, this task employs a dual master-slave arm configuration to achieve human-like bimanual manipulation for plate wiping. This task employs a dual master-slave arm system with a three-camera setup, selecting a dish-cleaning scenario in a household context to simulate bimanual operation. \cref{fig9} illustrates the task environment configuration. The setup consists of a pair of blue master-slave arms and a pair of white master-slave arms. The two master arms are responsible for teleoperating the slave arms to collect data, while the other two master arms execute the final dish-cleaning task. The triple-camera system is adopted, analogous to visual policy optimization~\cite{ref12}, leveraging multi-camera fusion strategies~\cite{ref13} by combining global, frontal, and side-view cameras for full-process monitoring. Multi-perspective fusion of global and wrist cameras enhances precision: a global camera fixed overhead records the workspace to guide plate-wiping; a front-facing camera mounted centrally directs the blue arm to grasp the plate edge; a downward-facing camera on the left ensures precise placement at the target location (marked with a red tag). On the table, a soiled plate is placed in the center, with a sponge placed on the right side. A desk lamp is installed near the bracket to provide supplemental lighting, ensuring consistent illumination for the experiment.
 
-\begin{figure}[H]
+\begin{figure}
 \centering
 \includegraphics[width=\textwidth]{fig9.pdf}
 \caption{ Training environment and task workflow} \label{fig9}
@@ -254,9 +255,9 @@ The conventional LeRobot framework was only suitable for single-arm static task 
 As demonstrated by the Open X-Embodiment team~\cite{ref16}, cross-task collaborative training can enhance data efficiency. For this task, we collected 30 episodes of teleoperation data for the dual-arm dish-cleaning task and conducted model training on a platform equipped with an RTX 4090 GPU. The relevant training parameters and data are presented in \cref{fig19} below.
 
 
-\begin{figure}[H]
+\begin{figure}
 \centering
-\includegraphics[width=323pt]{20}
+\includegraphics[width=323pt]{fig8.pdf}
 \caption{Loss curve} \label{fig19}
 \end{figure}
 
