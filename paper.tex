@@ -60,17 +60,21 @@
   Yuhang Li\inst{1} \and
   Qiuyue Che\inst{1} \and
   Qiushuang Liu\inst{1} \and
-  Deping Li\inst{1}\thanks{Corresponding author}  % 标记通讯作者
+  Deping Li\inst{1}\thanks{Corresponding author: lideping@jnu.edu.cn}
 }
 
 \authorrunning{Huang et al.}  % 保持运行标题简洁
 
+
 \institute{
-  Jinan University, \\
-  Zhuhai, China \\
-  \email{lideping@jnu.edu.cn}  % 优先展示通讯作者邮箱 \\  % 如果会议允许只放一个邮箱
+  School of Intelligent Systems Science and Engineering/JNU-Industry School of Artificial Intelligence,   % 补充学院名称
+  Jinan University, 
+  Zhuhai 519070, China \\ % 补充邮编
+  \email{lideping@jnu.edu.cn}  % 明确标记通讯作者邮箱
   %\email{gzhuangjunlin@163.com}  
 }
+
+
 \maketitle
 
 
@@ -138,7 +142,7 @@ Fig.~\ref{fig2-1} below illustrates the specific structure of our robotic arm sy
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{fig3.pdf}
-\caption{leader arm (Left) and follower arm(right).} \label{fig2-1}
+\caption{Leader arm (Left) and follower arm(right).} \label{fig2-1}
 \end{figure}
 
 % \begin{figure}[htbp]
@@ -165,7 +169,7 @@ Fig.~\ref{fig2-1} below illustrates the specific structure of our robotic arm sy
 \begin{figure}
 \centering
   \includegraphics[width=0.95\textwidth]{fig4.pdf}
-  \caption{ initial state(upper left); target state(upper right);training environment(bottom).} \label{fig2}
+  \caption{ Initial state(upper left); target state(upper right);training environment(bottom).} \label{fig2}
   \end{figure}
 
 \subsection{Tower of Hanoi task}
@@ -183,7 +187,7 @@ Fig.~\ref{fig10} presents the complete workflow of this task. The process begins
  \label{fig10}
 \end{figure}
 
-This task optimized the positioning of the wrist-mounted vision system. As shown in Fig.~\ref{fig12}, the initial configuration (Position 1) exhibited tier recognition errors in multi-layered disc scenarios, primarily manifesting as erroneous grasps of second-layer discs with only a 40\% success rate. The wrist-mounted camera is crucial for precision operations~\cite{ref6}.By relocating the camera to the robotic gripper's center position (Position 2), precise tier recognition was achieved, significantly improving the grasping success rate to 90\%.
+\noindent This task optimized the positioning of the wrist-mounted vision system. As shown in Fig.~\ref{fig12}, the initial configuration (Position 1) exhibited tier recognition errors in multi-layered disc scenarios, primarily manifesting as erroneous grasps of second-layer discs with only a 40\% success rate. The wrist-mounted camera is crucial for precision operations~\cite{ref6}.By relocating the camera to the robotic gripper's center position (Position 2), precise tier recognition was achieved, significantly improving the grasping success rate to 90\%.
 
 \begin{figure}[htbp]
 \centering
@@ -277,8 +281,8 @@ These findings suggest that for similar daily-life tasks, the proposed solution 
 \section{Conclusion}
 The two experiments above demonstrate that the ACT algorithm can reduce costs while meeting practical task requirements, making it suitable for real-world applications like factory robotic arms and household service robots. Although still constrained by hardware limitations and the scale/quality of demonstration datasets - preventing true task generalization - its end-to-end learning approach significantly decreases deployment costs and implementation barriers, enabling rapid adaptation to diverse complex daily tasks.
 
-\section{Acknowledgments}
-This research was supported by the National College Student Innovation and Entrepreneurship Training Program of China under project numbers 202410559078 and 202310559124.
+\subsubsection{Acknowledgments} This research was supported by the National College Student Innovation and Entrepreneurship Training Program of China under project numbers 202410559078 and 202310559124.
+
 
 % \begin{REF}
   % \vspace{-50pt}
