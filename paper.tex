@@ -23,9 +23,12 @@
 \usepackage{booktabs}  % 专业表格线
 \usepackage{array}     % 提供更好的列格式控制
 
-\usepackage{caption}   % 标题控制
-\captionsetup[figure]{labelfont=bf} % 强制加粗编号
-\captionsetup[table]{labelfont=bf} 
+\usepackage{caption}
+\captionsetup{
+    labelfont=bf,    % 加粗标签
+    labelsep=period, % 强制使用句点(.)而不是冒号(:)
+}
+
 \newcolumntype{C}{>{\centering\arraybackslash}X} % 定义居中列类型
 \usepackage{cleveref}
 \crefformat{figure}{\textbf{Figure~#2#1#3}}
@@ -85,11 +88,11 @@ Imitation learning allows robots to efficiently acquire complex tasks that are c
 \section{Introduction}
 The ACT algorithm creates low-cost imitation learning by combining action chunking and temporal ensemble to address error accumulation in behavioral cloning. It trains neural networks on state-action data, significantly reducing time-amplified execution errors in industrial precision tasks. 
  
- As shown in Fig.~\ref{fig1}(a),the algorithm employs action chunking and temporal ensemble techniques during training. With a fixed chunk size k, the agent receives environmental observations every k steps and executes k sequential actions. This design effectively reduces historical error accumulation. To ensure motion continuity, the algorithm queries the policy at every timestep, generating overlapping predicted actions that are then smoothly blended through temporal ensemble using exponential weighting.
+ As shown in Fig.~\ref{fig1}(a), the algorithm employs action chunking and temporal ensemble techniques during training. With a fixed chunk size k, the agent receives environmental observations every k steps and executes k sequential actions. This design effectively reduces historical error accumulation. To ensure motion continuity, the algorithm queries the policy at every timestep, generating overlapping predicted actions that are then smoothly blended through temporal ensemble using exponential weighting.
 
 \begin{figure}
 \includegraphics[width=\textwidth]{fig1.pdf}
-\caption{ACT implementation principles and CVAE model architecture}
+\caption{ACT implementation principles and CVAE model architecture.}
 \label{fig1}
 \end{figure}
 
@@ -161,7 +164,7 @@ Fig.~\ref{fig2-1} below illustrates the specific structure of our robotic arm sy
 \begin{figure}
 \centering
   \includegraphics[width=0.95\textwidth]{fig4.pdf}
-  \caption{ initial state(upper left); target state(upper right);training environment(bottom)} \label{fig2}
+  \caption{ initial state(upper left); target state(upper right);training environment(bottom).} \label{fig2}
   \end{figure}
 
 \subsection{Tower of Hanoi task}
@@ -175,7 +178,7 @@ Fig.~\ref{fig10} presents the complete workflow of this task. The process begins
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{10}
-\caption{Overall workflow}
+\caption{Overall workflow.}
  \label{fig10}
 \end{figure}
 
@@ -197,7 +200,7 @@ As shown in Fig.~\ref{fig14}, which illustrates the training loss curves for the
 \begin{figure}
 \centering
 \includegraphics[width=323pt]{fig15.pdf}
-\caption{The loss curve for the first two actions during model training} \label{fig14}
+\caption{The loss curve for the first two actions during model training.} \label{fig14}
 \end{figure}
 
 
@@ -205,7 +208,7 @@ As shown in Fig.~\ref{fig14}, which illustrates the training loss curves for the
 
 \begin{table}
   \centering
-    \caption{\small Model training specifications}\label{tab2}
+    \caption{Model training specifications}\label{tab2}
   \begin{tabularx}{\textwidth}{
       >{\centering\arraybackslash}p{0.8cm}     % 第一列固定宽度（窄）
       >{\centering\arraybackslash}X           % 第二列自动调整
@@ -261,7 +264,7 @@ As demonstrated by the Open X-Embodiment team~\cite{ref16}, cross-task collabora
 \begin{figure}
 \centering
 \includegraphics[width=323pt]{fig8.pdf}
-\caption{Loss curve} \label{fig19}
+\caption{Loss curve.} \label{fig19}
 \end{figure}
 
 
